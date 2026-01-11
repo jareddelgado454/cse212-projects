@@ -8,12 +8,21 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // PLAN:
+        // 1. Create a new array of doubles with size equal to 'length'
+        // 2. Loop from index 0 up to length - 1
+        // 3. For each index i, calculate the multiple by multiplying 'number' by (i + 1)
+        // 4. Store the calculated value in the array at position i
+        // 5. Return the completed array
 
-        return []; // replace this return statement with your own
+        double[] result = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            result[i] = number * (i + 1);
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -25,9 +34,20 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // PLAN:
+        // 1. Determine the index where the rotation starts (data.Count - amount)
+        // 2. Copy the last 'amount' elements into a new list
+        // 3. Copy the remaining elements from the beginning into another list
+        // 4. Clear the original list
+        // 5. Add the rotated elements back in the correct order
+
+        int startIndex = data.Count - amount;
+
+        List<int> rightPart = data.GetRange(startIndex, amount);
+        List<int> leftPart = data.GetRange(0, startIndex);
+
+        data.Clear();
+        data.AddRange(rightPart);
+        data.AddRange(leftPart);
     }
 }
